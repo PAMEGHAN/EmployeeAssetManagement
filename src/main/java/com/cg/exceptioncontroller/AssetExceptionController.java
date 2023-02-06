@@ -10,12 +10,12 @@ import com.cg.exception.AssetNotFoundException;
 
 @ControllerAdvice
 public class AssetExceptionController {
-	
+
 @ExceptionHandler(value = AssetNotFoundException.class)
-    
+
     public ResponseEntity<Object> handleUserException(Exception ex){
-        return new ResponseEntity<Object>("Asset Not Found",HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Asset Not Found",HttpStatus.NOT_FOUND);
     }
-	
+
 
 }

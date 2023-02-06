@@ -22,57 +22,57 @@ import com.cg.service.EmployeeService;
 
 @SpringBootTest
 public class EmployeeTestCases {
-	
-	@Mock 
+
+	@Mock
 	private EmployeeRepository emplRepository;
-	
+
 	@InjectMocks
 	private EmployeeService emplService;
-	
-	@Test 
+
+	@Test
 	void addEmployee() {
-		List<Asset> asset1=new ArrayList<Asset>();
-		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst",asset1);
+		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst");
 		when(emplRepository.save(employee)).thenReturn(employee);
 		Employee employeeDetails = emplService.addEmployee(employee);
 		assertThat(employeeDetails.getEmpName().equals(employee.getEmpName()));
-		
+
 	}
-	
+
 	@Test
 	void updateEmployee() {
-		List<Asset> asset1=new ArrayList<Asset>();
-		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst",asset1);
+		
+		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst");
 		when(emplRepository.findById(employee.getEmpId())).thenReturn(Optional.of(employee));
-		Employee employeeDetails = emplService.updateEmployee(employee);
+		Employee employeeDetails = emplService.updateEmployee(employee,1);
 		assertEquals("Hyderabad",employee.getEmpAddress());
 		verify(emplRepository,times(1)).findById(employee.getEmpId());
-		
+
 	}
-	
+
 	@Test
 	void deleteEmployee() {
-		List<Asset> asset1=new ArrayList<Asset>();
-		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst",asset1);
+		
+		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst");
 		when(emplRepository.findById(employee.getEmpId())).thenReturn(Optional.of(employee));
 		emplService.deleteEmployee(employee.getEmpId());
 		verify(emplRepository,times(1)).deleteById(employee.getEmpId());
 	}
-	
+
 	@Test
 	void viewEmployeeById() {
-		List<Asset> asset1=new ArrayList<Asset>();
-		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst",asset1);
+		
+		Employee employee = new Employee(1,"Meghana","Hyderabad",9876543210l,"Analyst");
 		when(emplRepository.findById(employee.getEmpId())).thenReturn(Optional.of(employee));
 		emplService.viewEmployeeById(employee.getEmpId());
 	}
-	
+
 	@Test
 	void viewAllEmployee() {
-		List<Asset> asset1=new ArrayList<Asset>();
-		List<Employee> employee = new ArrayList<Employee>();
+		List<Asset> asset1=new ArrayList<>();
+		List<Employee> employee = new ArrayList<>();
 		when(emplRepository.findAll()).thenReturn(employee);
 		emplService.viewAllEmployee();
-		
+
 	}
 }
+

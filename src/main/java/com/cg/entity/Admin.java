@@ -12,15 +12,15 @@ public class Admin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int adminId;
-	
+
 	@Column
 	private String adminName;
-	
+
 	@Column
 	private String password;
-	
+
 	public Admin() {}
-	
+
 
 	public Admin(int adminId, String adminName, String password) {
 		super();
@@ -59,8 +59,8 @@ public class Admin {
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", password=" + password + "]";
 	}
-	
-	
-	
+
+
+
 
 }

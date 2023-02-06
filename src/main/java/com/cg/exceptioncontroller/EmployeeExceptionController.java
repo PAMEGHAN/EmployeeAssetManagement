@@ -9,12 +9,12 @@ import com.cg.exception.EmployeeNotFoundException;
 
 @ControllerAdvice
 public class EmployeeExceptionController {
-	
+
 	@ExceptionHandler(value = EmployeeNotFoundException.class)
-    
+
     public ResponseEntity<Object> handleUserException(Exception ex){
-        return new ResponseEntity<Object>("Employee Not Found",HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Employee Not Found",HttpStatus.NOT_FOUND);
     }
-	
+
 
 }

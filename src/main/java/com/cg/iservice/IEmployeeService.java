@@ -5,7 +5,7 @@ import java.util.List;
 import com.cg.entity.Employee;
 
 public interface IEmployeeService {
-	
+
 	public Employee addEmployee(Employee employee);
 	public Employee updateEmployee(Employee employee, int empId);
 	public void deleteEmployee(int empId);

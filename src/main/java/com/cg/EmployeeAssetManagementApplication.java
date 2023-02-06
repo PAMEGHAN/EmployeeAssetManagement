@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan
 @Configuration
 public class EmployeeAssetManagementApplication {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeAssetManagementApplication.class, args);
 	}

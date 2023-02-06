@@ -10,5 +10,5 @@ public interface IAssetService {
 	public Asset updateAsset(int id,Asset asset);
 	 public void deleteAsset(int itemNum);
 	 public List<Asset> retrieveAllAssets();
-	
+
 }

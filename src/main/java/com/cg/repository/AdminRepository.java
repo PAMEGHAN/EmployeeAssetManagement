@@ -12,5 +12,5 @@ public interface AdminRepository extends JpaRepository<Admin,Integer> {
 
 	//Admin findByAdminNameAndPassword(String adminName, String password);
 
-	
+
 }

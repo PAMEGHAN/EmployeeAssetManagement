@@ -9,11 +9,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.entity.Admin;
 //import com.cg.entity.Asset;
 import com.cg.entity.Employee;
-import com.cg.exception.AdminNotFoundException;
-import com.cg.exception.EmployeeNotFoundException;
 import com.cg.iservice.IAdminService;
 import com.cg.repository.AdminRepository;
 //import com.cg.repository.AssetRepository;
@@ -21,21 +18,22 @@ import com.cg.repository.EmployeeRepository;
 
 @Service
 public class AdminService implements IAdminService {
-	
+
 	//Logger logger = Logger.getLogger(AdminService.class.getName());
-	
+
 	@Autowired
 	private AdminRepository adminRepository;
-	
+
 	@Autowired
 	private EmployeeRepository emplRepository;
-	
+
 	List<Employee> empList = new ArrayList<>();
 
-	
+
+	@Override
 	public Employee updateEmpName(Employee employee,int empId) {
 		 Employee employeeDetails=emplRepository.findById(employee.getEmpId()).get();
-		 
+
 		 employeeDetails.setEmpName(employee.getEmpName());
 		 //employeeDetails.setEmpId(employee.getEmpId());
 		 return emplRepository.save(employeeDetails);
@@ -43,7 +41,7 @@ public class AdminService implements IAdminService {
 	}
 
 
-	
+
 
 
 //	public Admin adminLogin(String adminName, String password) {
@@ -69,7 +67,7 @@ public class AdminService implements IAdminService {
 //	  }
 //	  return employee;
 //  }
-//	
-//	
-	
+//
+//
+
 }

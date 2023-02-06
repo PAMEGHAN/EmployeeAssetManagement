@@ -1,44 +1,46 @@
 package com.cg.entity;
 
- 
 
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
- 
+
 
 @Entity
-public class Asset 
+public class Asset
 {
     @Column
     private String itemName;
-    
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int itemNum;
-    
+
     @Column
     private int serialNum;
-    
+
     @Column
     private String status;
     
+    @ManyToOne
+    private Employee employee;
+
 
     public Asset() {}
 
 
-	public Asset(String itemName, int itemNum, int serialNum, String status) {
+	public Asset(String itemName, int itemNum, int serialNum, String status, Employee employee) {
 		super();
 		this.itemName = itemName;
 		this.itemNum = itemNum;
 		this.serialNum = serialNum;
 		this.status = status;
+		this.employee = employee;
 	}
 
 
@@ -82,11 +84,22 @@ public class Asset
 	}
 
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Asset [itemName=" + itemName + ", itemNum=" + itemNum + ", serialNum=" + serialNum + ", status="
-				+ status + "]";
+				+ status + ", employee=" + employee + "]";
 	}
+
 
 	
 
